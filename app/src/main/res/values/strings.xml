@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Vinilos</string>
+    <string name="detail_album_artist">Género</string>
+    <string name="detail_album_description">Descripción</string>
+    <string name="albums">Álbumes</string>
+    <string name="welcome_title">VINILOS</string>
+    <string name="welcome_rol1">Coleccionista</string>
+    <string name="welcome_rol2">Usuario</string>
+    <string name="description_Row">GOBACKROWIMAGE</string>
+</resources>
+
