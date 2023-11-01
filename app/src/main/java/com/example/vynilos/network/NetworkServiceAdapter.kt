@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class NetworkServiceAdapter {
 
     companion object {
-        val BASE_URL = "https://vynils-back-heroku.herokuapp.com/"
+        val BASE_URL = "http://34.69.228.4:3000s"
 
         fun getRetrofitInstance(): Retrofit {
             return Retrofit.Builder().
