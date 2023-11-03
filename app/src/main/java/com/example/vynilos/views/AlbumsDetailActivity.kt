@@ -3,10 +3,12 @@ package com.example.vynilos.views
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.vynilos.R
 import com.example.vynilos.databinding.ActivityDetailAlbumBinding
 import com.example.vynilos.viewmodels.AlbumDetailViewModel
 import com.squareup.picasso.Picasso
@@ -25,6 +27,12 @@ class AlbumsDetailActivity: AppCompatActivity() {
             initViewModel(albumId.toInt())
         }
         handleBackClick()
+
+
+        val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
+        val roleName = sharedPreferences.getString("role", "")
+        val rolTextView = findViewById<TextView>(R.id.rol)
+        rolTextView.text = roleName
     }
 
     private fun handleBackClick() {
