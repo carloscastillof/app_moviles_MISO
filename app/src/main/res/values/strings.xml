@@ -7,5 +7,7 @@
     <string name="welcome_rol1">Coleccionista</string>
     <string name="welcome_rol2">Usuario</string>
     <string name="description_Row">GOBACKROWIMAGE</string>
+    <string name="asignar_cancion">Asignar Canción</string>
+    <string name="comentar">Comentar</string>
 </resources>
 
