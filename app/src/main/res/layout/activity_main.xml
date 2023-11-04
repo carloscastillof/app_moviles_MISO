@@ -37,36 +37,48 @@
                 android:gravity="bottom"
                 android:layout_marginTop="15dp"
                 app:srcCompat="@drawable/vinyls" />
-
-            <TextView
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:text="¿Con qué usuario quiere ingresar?"/>
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical"
+                android:background="#232323">
 
-            <Button
-                android:id="@+id/btn_coleccionista"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:text="@string/welcome_rol1" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-            <Button
-                android:id="@+id/btn_usuario"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:text="@string/welcome_rol2" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="¿Con qué usuario quiere ingresar?"/>
 
+                <Button
+                    android:id="@+id/btn_coleccionista"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:text="@string/welcome_rol1" />
 
+                <Button
+                    android:id="@+id/btn_usuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:text="@string/welcome_rol2" />
+                </LinearLayout>
+            </FrameLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
