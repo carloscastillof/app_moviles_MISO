@@ -28,18 +28,18 @@
             android:layout_below="@id/spacer"
             android:layout_centerHorizontal="true"
             android:textColor="@color/white"
-            android:textSize="21sp"
+            android:textSize="28sp"
             tools:text="User Your Illusion I"/>
 
         <ImageView
             android:id="@+id/ivCover"
-            android:layout_width="129dp"
-            android:layout_height="106dp"
+            android:layout_width="142dp"
+            android:layout_height="112dp"
             android:layout_below="@id/title"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="63dp"
-            android:layout_marginEnd="143dp"
+            android:layout_marginTop="41dp"
+            android:layout_marginEnd="134dp"
             android:layout_marginBottom="15dp"
             app:civ_border_color="@color/white"
             app:civ_border_width="1dp" />
@@ -73,40 +73,77 @@
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="261dp">
 
-        <TextView
-            android:id="@+id/rol"
-            android:layout_width="391dp"
-            android:layout_height="82dp"
-            android:layout_marginStart="18dp"
-            android:layout_marginTop="300dp"
-            android:layout_marginEnd="180dp"
-            android:layout_marginBottom="18dp"
-            android:text="@string/detail_album_description"
-            android:textColor="@color/white"
-            android:textSize="21sp" />
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tvDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/descriptionText"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="15dp"
-            android:textColor="@color/white"
-            tools:text="Lorem ipsum dolor sitor nec elit. Mauris lobortis, lorem eu imperdiet egestas, neque ex tristique dui, et blandit orci lacus vitae nunc. Morbi congue lacus ac nisi laoreet, ac gravida mi facilisis. Nullam vulputate dui est, eget luctus turpis posuere vitae. Integer elementum erat in urna sollicitudin ullamcorper. Donec egestas tincidunt lectus, et convallis velit. Donec venenatis risus odio, nec consectetur purus faucibus non. Curabitur scelerisque neque eu enim pulvinar tempor." />
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tracks" />
 
-        <TextView
-            android:id="@+id/descriptionText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="15dp"
-            android:text="@string/detail_album_description"
-            android:textColor="@color/white"
-            android:textSize="21sp" />
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comentarios" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <FrameLayout
+            android:id="@+id/tabContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/tracksContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/actionButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tabLayout"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="60dp"
+                    android:background="#D0BCFF"
+                    android:drawableLeft="@android:drawable/ic_input_add"
+                    android:drawablePadding="3dp"
+                    android:gravity="center_vertical"
+                    android:padding="2dp"
+                    android:paddingEnd="20dp"
+                    android:text="Asginar Canción"
+                    android:textColor="@android:color/white" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/comentariosContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/actionButtonComentarios"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tabLayout"
+                    android:layout_gravity="start"
+                    android:layout_marginTop="60dp"
+                    android:background="#FF5733"
+                    android:drawableLeft="@android:drawable/ic_input_add"
+                    android:drawablePadding="3dp"
+                    android:gravity="center_vertical"
+                    android:padding="2dp"
+                    android:paddingEnd="20dp"
+                    android:text="Comentarios"
+                    android:textColor="@android:color/white"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+        </FrameLayout>
+
     </RelativeLayout>
+
 </RelativeLayout>
