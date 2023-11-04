@@ -29,18 +29,19 @@
             android:padding="16dp">
 
             <Button
+                android:id="@+id/agregaralbumbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@android:drawable/ic_input_add"
-                android:text="Agregar un álbum"
-                android:paddingEnd="8dp"
+                android:layout_gravity="start"
                 android:background="#D0BCFF"
+                android:drawableLeft="@android:drawable/ic_input_add"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
                 android:onClick="onAddAlbumClick"
                 android:padding="2dp"
-                android:textColor="@android:color/white"
-                android:gravity="center_vertical"
-                android:drawablePadding="5dp"
-                android:layout_gravity="start" />
+                android:paddingEnd="8dp"
+                android:text="Agregar un álbum"
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
 
