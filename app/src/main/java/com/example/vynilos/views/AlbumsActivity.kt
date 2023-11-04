@@ -1,8 +1,11 @@
 package com.example.vynilos.views
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vynilos.R
 import com.example.vynilos.databinding.ActivityAlbumsBinding
+import com.example.vynilos.enums.ROL
 import com.example.vynilos.viewmodels.AlbumsActivityViewModel
 import com.example.vynilos.views.adapters.AlbumAdapter
 
@@ -18,6 +22,14 @@ class AlbumsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAlbumsBinding
     private lateinit var adapter: AlbumAdapter
 
+    private fun getRol(): ROL {
+        val role = getSharedPreferences("user", MODE_PRIVATE).getString("role", "")
+        if( !role.isNullOrBlank()){
+            return ROL.valueOf(role)
+        } else {
+            return ROL.USUARIO
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAlbumsBinding.inflate(layoutInflater)
@@ -27,7 +39,9 @@ class AlbumsActivity : AppCompatActivity() {
         handleBackClick()
         initViewModel()
         initRecyclerView()
+        val agregarAlbumBtn = findViewById<Button>(R.id.agregaralbumbtn)
 
+        agregarAlbumBtn.visibility = if (getRol() == ROL.COLECCIONISTA) View.VISIBLE else View.GONE
         val etSearch = findViewById<EditText>(R.id.etSearch)
         etSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {

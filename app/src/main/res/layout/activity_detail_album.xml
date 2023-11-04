@@ -116,29 +116,29 @@
                     android:text="Asginar Canción"
                     android:textColor="@android:color/white" />
 
-            </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/comentariosContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <RelativeLayout
-                android:id="@+id/comentariosContent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                    <Button
+                        android:id="@+id/actionButtonComentarios"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tabLayout"
+                        android:layout_gravity="start"
+                        android:layout_marginTop="60dp"
+                        android:background="#FF5733"
+                        android:drawableLeft="@android:drawable/ic_input_add"
+                        android:drawablePadding="3dp"
+                        android:gravity="center_vertical"
+                        android:padding="2dp"
+                        android:paddingEnd="20dp"
+                        android:text="Comentarios"
+                        android:textColor="@android:color/white"
+                        android:visibility="gone" />
 
-                <Button
-                    android:id="@+id/actionButtonComentarios"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tabLayout"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="60dp"
-                    android:background="#FF5733"
-                    android:drawableLeft="@android:drawable/ic_input_add"
-                    android:drawablePadding="3dp"
-                    android:gravity="center_vertical"
-                    android:padding="2dp"
-                    android:paddingEnd="20dp"
-                    android:text="Comentarios"
-                    android:textColor="@android:color/white"
-                    android:visibility="gone" />
+                </RelativeLayout>
 
             </RelativeLayout>
 
