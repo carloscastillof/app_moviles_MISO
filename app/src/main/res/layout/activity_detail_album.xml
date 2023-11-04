@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.AlbumsDetailActivity"
-    android:background="@color/background">
+    android:background="@color/black">
     <RelativeLayout
         android:layout_width="408dp"
         android:layout_height="259dp"
-        android:background="@color/background"
+        android:background="@color/black"
         android:orientation="vertical"
         android:id="@+id/principal"
         tools:layout_editor_absoluteX="1dp"
@@ -33,13 +33,13 @@
 
         <ImageView
             android:id="@+id/ivCover"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="129dp"
+            android:layout_height="106dp"
             android:layout_below="@id/title"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginTop="63dp"
+            android:layout_marginEnd="143dp"
             android:layout_marginBottom="15dp"
             app:civ_border_color="@color/white"
             app:civ_border_width="1dp" />
@@ -74,15 +74,6 @@
         tools:layout_editor_absoluteY="261dp">
 
         <TextView
-            android:id="@+id/descriptionText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:text="@string/detail_album_description"
-            android:textColor="@color/white"
-            android:textSize="21sp" />
-
-        <TextView
             android:id="@+id/rol"
             android:layout_width="391dp"
             android:layout_height="82dp"
@@ -100,10 +91,22 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/descriptionText"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="15dp"
             android:textColor="@color/white"
             tools:text="Lorem ipsum dolor sitor nec elit. Mauris lobortis, lorem eu imperdiet egestas, neque ex tristique dui, et blandit orci lacus vitae nunc. Morbi congue lacus ac nisi laoreet, ac gravida mi facilisis. Nullam vulputate dui est, eget luctus turpis posuere vitae. Integer elementum erat in urna sollicitudin ullamcorper. Donec egestas tincidunt lectus, et convallis velit. Donec venenatis risus odio, nec consectetur purus faucibus non. Curabitur scelerisque neque eu enim pulvinar tempor." />
+
+        <TextView
+            android:id="@+id/descriptionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:text="@string/detail_album_description"
+            android:textColor="@color/white"
+            android:textSize="21sp" />
     </RelativeLayout>
 </RelativeLayout>
