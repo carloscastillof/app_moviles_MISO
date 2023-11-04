@@ -90,6 +90,19 @@
 
         </com.google.android.material.tabs.TabLayout>
 
+        <ImageView
+            android:id="@+id/imagenView"
+            android:layout_width="282dp"
+            android:layout_height="252dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginEnd="63dp"
+            android:layout_marginBottom="15dp"
+            android:src="@drawable/construction"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="1dp" />
+
         <FrameLayout
             android:id="@+id/tabContent"
             android:layout_width="match_parent"
