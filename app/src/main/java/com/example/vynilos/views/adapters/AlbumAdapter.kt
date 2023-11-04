@@ -4,25 +4,50 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.vynilos.R
 import com.example.vynilos.databinding.ItemAlbumBinding
 import com.example.vynilos.models.Album
-import com.example.vynilos.views.AlbumsActivity
 import com.example.vynilos.views.AlbumsDetailActivity
 import com.squareup.picasso.Picasso
+import java.text.Normalizer
 
 class AlbumAdapter() : RecyclerView.Adapter<AlbumAdapter.AlbumHolder>() {
-    private var albums : List<Album>? = null
+    private var albums: List<Album>? = null
+    private var filteredAlbums: List<Album>? = null
+
+    init {
+        filteredAlbums = albums
+    }
 
     override fun onBindViewHolder(holder: AlbumHolder, position: Int) {
-        val item = albums?.get(position)
+        val item = filteredAlbums?.get(position)
         holder.bind(item!!)
     }
 
     fun setAlbums(albumsList: List<Album>) {
-        this.albums = albumsList
+        albums = albumsList
+        filteredAlbums = albumsList
+        notifyDataSetChanged()
+    }
+
+    fun filter(query: String) {
+        val normalizedQuery = removeAccents(query)
+        filteredAlbums = if (normalizedQuery.isEmpty()) {
+            albums
+        } else {
+            albums?.filter { album ->
+                val normalizedName = removeAccents(album.name).toLowerCase()
+                val normalizedDescription = removeAccents(album.description).toLowerCase()
+                normalizedName.contains(normalizedQuery.toLowerCase()) || normalizedDescription.contains(normalizedQuery.toLowerCase())
+            }
+        }
+        notifyDataSetChanged()
+    }
+
+    private fun removeAccents(text: String): String {
+        val normalizedText = Normalizer.normalize(text, Normalizer.Form.NFD)
+        return normalizedText.replace("[\\p{InCombiningDiacriticalMarks}]".toRegex(), "")
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AlbumHolder {
@@ -31,8 +56,7 @@ class AlbumAdapter() : RecyclerView.Adapter<AlbumAdapter.AlbumHolder>() {
     }
 
     override fun getItemCount(): Int {
-        if(albums == null) return 0
-        else return albums?.size!!
+        return filteredAlbums?.size ?: 0
     }
 
     class AlbumHolder(view: View) : RecyclerView.ViewHolder(view) {

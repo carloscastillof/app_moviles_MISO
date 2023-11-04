@@ -1,18 +1,18 @@
 package com.example.vynilos.views
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.vynilos.MainActivity
 import com.example.vynilos.R
-import com.example.vynilos.views.adapters.AlbumAdapter
 import com.example.vynilos.databinding.ActivityAlbumsBinding
 import com.example.vynilos.viewmodels.AlbumsActivityViewModel
+import com.example.vynilos.views.adapters.AlbumAdapter
 
 class AlbumsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAlbumsBinding
@@ -27,6 +27,19 @@ class AlbumsActivity : AppCompatActivity() {
         handleBackClick()
         initViewModel()
         initRecyclerView()
+
+        val etSearch = findViewById<EditText>(R.id.etSearch)
+        etSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                adapter.filter(s.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
    }
 
     private fun setToolbarText() {
