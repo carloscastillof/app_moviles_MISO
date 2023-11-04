@@ -3,11 +3,9 @@ package com.example.vynilos
 
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.*
-import androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -24,14 +22,14 @@ import org.junit.runner.RunWith
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class PM009 {
+class busqueda_album_listado {
 
     @Rule
     @JvmField
     var mActivityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
-    fun pM009() {
+    fun busqueda_album_listado() {
         val materialButton = onView(
             allOf(
                 withId(R.id.btn_coleccionista), withText("Coleccionista"),
@@ -45,7 +43,7 @@ class PM009 {
             )
         )
         materialButton.perform(scrollTo(), click())
-        Thread.sleep(1000)
+        Thread.sleep(2000)
         val appCompatEditText = onView(
             allOf(
                 withId(R.id.etSearch),
@@ -59,27 +57,45 @@ class PM009 {
                 isDisplayed()
             )
         )
-        appCompatEditText.perform(replaceText("Poeta"), closeSoftKeyboard())
-        Thread.sleep(1000)
+        appCompatEditText.perform(replaceText("buscando"), closeSoftKeyboard())
+        Thread.sleep(2000)
         val textView = onView(
             allOf(
-                withId(R.id.tvName), withText("Poeta del Pueblo"),
+                withId(R.id.tvReleaseDate), withText("1984 - Salsa"),
                 withParent(withParent(IsInstanceOf.instanceOf(android.widget.LinearLayout::class.java))),
                 isDisplayed()
             )
         )
-        textView.check(matches(withText("Poeta del Pueblo")))
+        textView.check(matches(withText("1984 - Salsa")))
 
-        val recyclerView = onView(
+        val appCompatImageView = onView(
             allOf(
-                withId(R.id.rvAlbums),
+                withId(R.id.left_icon), withContentDescription("GOBACKROWIMAGE"),
                 childAtPosition(
-                    withClassName(`is`("android.widget.LinearLayout")),
-                    2
+                    childAtPosition(
+                        withId(R.id.toolbar),
+                        0
+                    ),
+                    0
+                ),
+                isDisplayed()
+            )
+        )
+        appCompatImageView.perform(click())
+
+        val materialButton2 = onView(
+            allOf(
+                withId(R.id.btn_usuario), withText("Usuario"),
+                childAtPosition(
+                    childAtPosition(
+                        withClassName(`is`("android.widget.ScrollView")),
+                        0
+                    ),
+                    3
                 )
             )
         )
-        recyclerView.perform(actionOnItemAtPosition<ViewHolder>(0, click()))
+        materialButton2.perform(scrollTo(), click())
     }
 
     private fun childAtPosition(
