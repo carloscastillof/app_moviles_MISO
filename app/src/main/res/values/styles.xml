@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SearchEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:background">#2B2930</item>
+        <item name="android:hint">Buscar un Álbum aquí</item>
+        <item name="android:drawableEnd">@android:drawable/ic_menu_search</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:layout_marginTop">?android:attr/actionBarSize</item>
+        <item name="android:layout_marginBottom">16dp</item>
+    </style>
+</resources>
