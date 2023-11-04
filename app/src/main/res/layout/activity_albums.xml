@@ -7,7 +7,7 @@
     tools:context=".views.AlbumsActivity">
 
     <include android:id="@+id/toolbar" layout="@layout/toolbar" />
-    <include layout="@layout/app_image"/>
+    <include layout="@layout/app_image" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,11 +21,32 @@
             android:imeOptions="actionSearch"
             android:inputType="text" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="start|center_vertical"
+            android:padding="16dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@android:drawable/ic_input_add"
+                android:text="Agregar un álbum"
+                android:paddingEnd="8dp"
+                android:background="#D0BCFF"
+                android:onClick="onAddAlbumClick"
+                android:padding="2dp"
+                android:textColor="@android:color/white"
+                android:gravity="center_vertical"
+                android:drawablePadding="5dp"
+                android:layout_gravity="start" />
+
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvAlbums"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="match_parent" />
     </LinearLayout>
 </FrameLayout>
