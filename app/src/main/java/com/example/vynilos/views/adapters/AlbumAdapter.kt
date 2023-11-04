@@ -39,9 +39,16 @@ class AlbumAdapter() : RecyclerView.Adapter<AlbumAdapter.AlbumHolder>() {
         private val binding = ItemAlbumBinding.bind(view)
 
         fun bind(album:Album){
+
             binding.tvName.text = album.name
             binding.tvDescription.text = album.description
-            binding.tvReleaseDate.text = album.releaseDate
+
+            val releaseDate = album.releaseDate
+            val year = releaseDate.substring(0, 4)
+            val releaseGenreText = "$year - ${album.genre}"
+
+            binding.tvReleaseDate.text = releaseGenreText
+
             Picasso.get().load(album.cover).into(binding.ivCover)
 
             itemView.setOnClickListener {

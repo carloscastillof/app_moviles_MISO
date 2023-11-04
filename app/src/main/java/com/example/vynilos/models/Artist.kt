@@ -1,6 +1,5 @@
 package com.example.vynilos.models
 
-
 data class Artist (
     val id: Number,
     val name: String,
