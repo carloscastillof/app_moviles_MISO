@@ -39,6 +39,7 @@ Configura un emulador de Android o conecta un dispositivo Android a tu computado
 Si Android Studio ya está instalado en tu sistema, asegúrate de sincronizar el archivo build.gradle para evitar posibles conflictos de versiones con las dependencias del proyecto en tu entorno local.
 
 ## Backend de la Aplicación - Consideraciones
+Las APIs utilizadas dentro de este desarrollo se pueden encontrar en el siguiente repositorio https://github.com/jesushenriquez/BackVynils, es importante mencionar que para efectos practicos estas APIs estan alojadas en GCP.
 
 ## Ejecutar pruebas de Espresso
 
