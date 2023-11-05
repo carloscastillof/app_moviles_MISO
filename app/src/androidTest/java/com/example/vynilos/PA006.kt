@@ -24,51 +24,28 @@ import org.junit.runner.RunWith
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class PM009 {
+class PA006 {
 
     @Rule
     @JvmField
     var mActivityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
 
     @Test
-    fun pM009() {
+    fun pM006() {
         val materialButton = onView(
             allOf(
-                withId(R.id.btn_coleccionista), withText("Coleccionista"),
+                withId(R.id.btn_usuario), withText("Usuario"),
                 childAtPosition(
                     childAtPosition(
                         withClassName(`is`("android.widget.ScrollView")),
                         0
                     ),
-                    2
+                    3
                 )
             )
         )
+        Thread.sleep(1000)
         materialButton.perform(scrollTo(), click())
-        Thread.sleep(1000)
-        val appCompatEditText = onView(
-            allOf(
-                withId(R.id.etSearch),
-                childAtPosition(
-                    childAtPosition(
-                        withClassName(`is`("android.widget.FrameLayout")),
-                        2
-                    ),
-                    0
-                ),
-                isDisplayed()
-            )
-        )
-        appCompatEditText.perform(replaceText("Poeta"), closeSoftKeyboard())
-        Thread.sleep(1000)
-        val textView = onView(
-            allOf(
-                withId(R.id.tvName), withText("Poeta del Pueblo"),
-                withParent(withParent(IsInstanceOf.instanceOf(android.widget.LinearLayout::class.java))),
-                isDisplayed()
-            )
-        )
-        textView.check(matches(withText("Poeta del Pueblo")))
 
         val recyclerView = onView(
             allOf(
@@ -80,6 +57,21 @@ class PM009 {
             )
         )
         recyclerView.perform(actionOnItemAtPosition<ViewHolder>(0, click()))
+
+        val imageView = onView(
+            allOf(
+                withId(R.id.ivCover),
+                withParent(
+                    allOf(
+                        withId(R.id.principal),
+                        withParent(IsInstanceOf.instanceOf(android.widget.RelativeLayout::class.java))
+                    )
+                ),
+                isDisplayed()
+            )
+        )
+        Thread.sleep(1000)
+        imageView.check(matches(isDisplayed()))
     }
 
     private fun childAtPosition(

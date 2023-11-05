@@ -21,7 +21,7 @@ import org.junit.runner.RunWith
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class PM005 {
+class PA005 {
 
     @Rule
     @JvmField
@@ -42,7 +42,7 @@ class PM005 {
             )
         )
         materialButton.perform(scrollTo(), click())
-
+        Thread.sleep(1000)
         val appCompatImageView = onView(
             allOf(
                 withId(R.id.left_icon), withContentDescription("GOBACKROWIMAGE"),
@@ -57,7 +57,7 @@ class PM005 {
             )
         )
         appCompatImageView.perform(click())
-
+        Thread.sleep(1000)
         val materialButton2 = onView(
             allOf(
                 withId(R.id.btn_usuario), withText("Usuario"),
