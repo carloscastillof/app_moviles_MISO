@@ -40,4 +40,19 @@ Si Android Studio ya está instalado en tu sistema, asegúrate de sincronizar el
 
 ## Backend de la Aplicación - Consideraciones
 
+## Ejecutar pruebas de Espresso
+
+En la carpeta com.example.vynilos (androidTest) ubique los archivos PA###, que son los mismos escenarios de los de nuestro inventario con los ID's PM###.
+
+<img width="380" alt="image" src="https://github.com/carloscastillof/app_moviles_MISO/assets/124113572/c2166b1a-8506-418f-b735-2ffa433d6467">
+
+Seleccione el que desea ejecutar, oprima click derecho y oprime la opción "Run 'PA###'"
+
+<img width="242" alt="image" src="https://github.com/carloscastillof/app_moviles_MISO/assets/124113572/cdc79dba-c23b-4956-a765-6b39ff3c6cfb">
+
+Cuando se ejecute la prueba verá un resultado como este que indica que la prueba fue satisfactoria:
+
+![image](https://github.com/carloscastillof/app_moviles_MISO/assets/124113572/f5d8c11c-219a-4a10-a5eb-cfb13e85d901)
+
+
 ## Archivo APK
