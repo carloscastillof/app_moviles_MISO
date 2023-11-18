@@ -1,5 +1,6 @@
 package com.example.vynilos.views
 
+import android.content.Intent
 import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Editable
@@ -17,6 +18,8 @@ import com.example.vynilos.databinding.ActivityAlbumsBinding
 import com.example.vynilos.enums.ROL
 import com.example.vynilos.viewmodels.AlbumsActivityViewModel
 import com.example.vynilos.views.adapters.AlbumAdapter
+
+const val artistId = "com.example.vynilos.artistId"
 
 class AlbumsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAlbumsBinding
@@ -39,6 +42,7 @@ class AlbumsActivity : AppCompatActivity() {
         handleBackClick()
         initViewModel()
         initRecyclerView()
+        bindMenuEvents()
         val agregarAlbumBtn = findViewById<Button>(R.id.agregaralbumbtn)
 
         agregarAlbumBtn.visibility = if (getRol() == ROL.COLECCIONISTA) View.VISIBLE else View.GONE
@@ -81,6 +85,18 @@ class AlbumsActivity : AppCompatActivity() {
         viewModel.makeApiCall()
     }
 
+    private fun bindMenuEvents() {
+        val btnDetalleArtista: Button = findViewById(R.id.detalleArtista)
+        btnDetalleArtista.setOnClickListener { view ->
+            openArtistDetail(view)
+        }
+    }
+    private fun openArtistDetail(view: View) {
+        val intent = Intent(this, ArtistDetailActivity::class.java).apply {
+            putExtra(artistId, "2")
+        }
+        startActivity(intent)
+    }
     private fun showError() {
         Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT).show()
     }

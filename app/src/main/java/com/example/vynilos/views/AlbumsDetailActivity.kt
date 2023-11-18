@@ -13,6 +13,7 @@ import com.example.vynilos.databinding.ActivityDetailAlbumBinding
 import com.example.vynilos.viewmodels.AlbumDetailViewModel
 import com.squareup.picasso.Picasso
 import android.widget.Button
+import com.example.vynilos.viewmodels.ArtistDetailViewModel
 import com.google.android.material.tabs.TabLayout
 
 class AlbumsDetailActivity: AppCompatActivity() {
