@@ -1,6 +1,6 @@
 package com.example.vynilos.views
 
-import android.opengl.Visibility
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -54,6 +54,11 @@ class AlbumsActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {
             }
         })
+
+        agregarAlbumBtn.setOnClickListener {
+            val intent = Intent(this, AlbumsCreateActivity::class.java)
+            startActivity(intent)
+        }
    }
 
     private fun setToolbarText() {

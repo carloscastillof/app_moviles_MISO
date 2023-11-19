@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <!-- Toolbar -->
+    <include android:id="@+id/toolbar" layout="@layout/toolbar" />
+    <include layout="@layout/app_image" />
+
+    <!-- Formulario -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Titulo -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Crear un Álbum"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:layout_marginBottom="16dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#33252328"
+            android:padding="16dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="2dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/etTituloLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColorHint="@android:color/white"
+                        app:boxStrokeColor="@android:color/white">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etTitulo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/transparent"
+                            android:hint="Título"
+                            android:inputType="text"
+                            android:maxLength="100"
+                            android:textColor="@android:color/white"
+                            android:textColorHighlight="@android:color/white"
+                            android:textColorHint="@android:color/white" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/etDescripcionLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColorHint="@android:color/white"
+                        app:boxStrokeColor="@android:color/white">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etDescripcion"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:maxLength="100"
+                            android:hint="Descripción"
+                            android:textColorHint="@android:color/white"
+                            android:textColor="@android:color/white"
+                            android:background="@color/transparent"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/etFechaLanzamientoLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColorHint="@android:color/white"
+                        app:boxStrokeColor="@android:color/white">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etFechaLanzamiento"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:maxLength="100"
+                            android:hint="Fecha de lanzamiento (yyyy-mm-dd)"
+                            android:textColorHint="@android:color/white"
+                            android:textColor="@android:color/white"
+                            android:background="@color/transparent"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/etGeneroLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColorHint="@android:color/white"
+                        app:boxStrokeColor="@android:color/white">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etGenero"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:maxLength="100"
+                            android:hint="Genero"
+                            android:textColorHint="@android:color/white"
+                            android:textColor="@android:color/white"
+                            android:background="@color/transparent"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/etSelloDiscograficoLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColorHint="@android:color/white"
+                        app:boxStrokeColor="@android:color/white">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etSelloDiscografico"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:maxLength="100"
+                            android:hint="Fecha de lanzamiento (yyyy-mm-dd)"
+                            android:textColorHint="@android:color/white"
+                            android:textColor="@android:color/white"
+                            android:background="@color/transparent"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/etCoverImageUrlLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColorHint="@android:color/white"
+                        app:boxStrokeColor="@android:color/white">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etCoverImageUrl"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:maxLength="100"
+                            android:hint="Imagen del Album (URL)"
+                            android:textColorHint="@android:color/white"
+                            android:textColor="@android:color/white"
+                            android:background="@color/transparent"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Botones Cancelar y Guardar -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="16dp">
+
+                        <Button
+                            android:id="@+id/btnCancelar"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Cancelar"
+                            android:textColor="@android:color/white"/>
+
+                        <View
+                            android:layout_width="8dp"
+                            android:layout_height="match_parent" />
+
+                        <Button
+                            android:id="@+id/btnGuardar"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Guardar"
+                            android:textColor="@android:color/white"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
