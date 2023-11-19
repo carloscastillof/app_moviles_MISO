@@ -11,8 +11,9 @@ import com.example.vynilos.models.Album
 import com.example.vynilos.views.AlbumsDetailActivity
 import com.squareup.picasso.Picasso
 import java.text.Normalizer
+import java.util.Locale
 
-class AlbumAdapter() : RecyclerView.Adapter<AlbumAdapter.AlbumHolder>() {
+class AlbumAdapter : RecyclerView.Adapter<AlbumAdapter.AlbumHolder>() {
     private var albums: List<Album>? = null
     private var filteredAlbums: List<Album>? = null
 
@@ -37,9 +38,11 @@ class AlbumAdapter() : RecyclerView.Adapter<AlbumAdapter.AlbumHolder>() {
             albums
         } else {
             albums?.filter { album ->
-                val normalizedName = removeAccents(album.name).toLowerCase()
-                val normalizedDescription = removeAccents(album.description).toLowerCase()
-                normalizedName.contains(normalizedQuery.toLowerCase()) || normalizedDescription.contains(normalizedQuery.toLowerCase())
+                val normalizedName = removeAccents(album.name).lowercase(Locale.getDefault())
+                val normalizedDescription = removeAccents(album.description).lowercase(Locale.getDefault())
+                normalizedName.contains(normalizedQuery.lowercase(Locale.getDefault())) || normalizedDescription.contains(
+                    normalizedQuery.lowercase(Locale.getDefault())
+                )
             }
         }
         notifyDataSetChanged()

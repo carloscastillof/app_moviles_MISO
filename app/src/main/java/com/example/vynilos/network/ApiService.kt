@@ -15,4 +15,7 @@ interface ApiService {
 
     @GET
     fun getArtist(@Url url:String):Call<Artist>
+
+    @GET("/bands")
+    fun getMusicians(): Call<List<Artist>>
 }

@@ -1,6 +1,7 @@
 package com.example.vynilos.views
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.vynilos.databinding.ActivityArtistsDetailBinding
@@ -16,6 +17,7 @@ class ArtistDetailActivity: AppCompatActivity() {
         setContentView(binding.root)
 
         val artistId = intent.getStringExtra(artistId)
+        Log.i("Artist_onCreate",artistId.toString())
         if (artistId != null) {
             initViewModel(artistId.toInt())
         }

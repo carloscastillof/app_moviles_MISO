@@ -46,6 +46,11 @@ class AlbumsActivity : AppCompatActivity() {
         val agregarAlbumBtn = findViewById<Button>(R.id.agregaralbumbtn)
 
         agregarAlbumBtn.visibility = if (getRol() == ROL.COLECCIONISTA) View.VISIBLE else View.GONE
+
+        val gotoMusiciansBtn = findViewById<Button>(R.id.list_musicians)
+        gotoMusiciansBtn.setOnClickListener {
+            this.navegarListadoMusicos()
+        }
         val etSearch = findViewById<EditText>(R.id.etSearch)
         etSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -86,18 +91,21 @@ class AlbumsActivity : AppCompatActivity() {
     }
 
     private fun bindMenuEvents() {
-        val btnDetalleArtista: Button = findViewById(R.id.detalleArtista)
-        btnDetalleArtista.setOnClickListener { view ->
-            openArtistDetail(view)
+        val btnDetalleArtista: Button = findViewById(R.id.list_musicians)
+        btnDetalleArtista.setOnClickListener {
+            navegarListadoMusicos()
         }
     }
-    private fun openArtistDetail(view: View) {
-        val intent = Intent(this, ArtistDetailActivity::class.java).apply {
-            putExtra(artistId, "2")
-        }
-        startActivity(intent)
-    }
+
     private fun showError() {
         Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT).show()
     }
+
+    fun navegarListadoMusicos() {
+        val intent = Intent(this, MusiciansActivity::class.java).apply {
+        }
+        startActivity(intent)
+    }
+
+    fun navegarAddAlbum(view: View) {}
 }
