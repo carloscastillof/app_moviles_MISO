@@ -24,6 +24,7 @@ class MusiciansViewModel: ViewModel() {
     private fun getMusicians(){
         CoroutineScope(Dispatchers.IO).launch {
             val artistsResponse = artistRepo.getArtists()
+
             if(artistsResponse.isNotEmpty()){
                 artists.postValue(artistsResponse);
                 Log.i("artists","Cargo el listado de artistas")

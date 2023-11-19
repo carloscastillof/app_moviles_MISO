@@ -19,6 +19,8 @@ import com.example.vynilos.enums.ROL
 import com.example.vynilos.viewmodels.AlbumsActivityViewModel
 import com.example.vynilos.views.adapters.AlbumAdapter
 
+const val artistId = "com.example.vynilos.artistId"
+
 class AlbumsActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAlbumsBinding
     private lateinit var adapter: AlbumAdapter
@@ -40,6 +42,7 @@ class AlbumsActivity : AppCompatActivity() {
         handleBackClick()
         initViewModel()
         initRecyclerView()
+        bindMenuEvents()
         val agregarAlbumBtn = findViewById<Button>(R.id.agregaralbumbtn)
 
         agregarAlbumBtn.visibility = if (getRol() == ROL.COLECCIONISTA) View.VISIBLE else View.GONE
@@ -85,6 +88,13 @@ class AlbumsActivity : AppCompatActivity() {
             adapter.notifyDataSetChanged()
         })
         viewModel.makeApiCall()
+    }
+
+    private fun bindMenuEvents() {
+        val btnDetalleArtista: Button = findViewById(R.id.list_musicians)
+        btnDetalleArtista.setOnClickListener {
+            navegarListadoMusicos()
+        }
     }
 
     private fun showError() {

@@ -56,4 +56,5 @@ class MusiciansActivity : AppCompatActivity() {
         binding.rvMusicians.adapter = adapterMusicianList
 
     }
+
 }
