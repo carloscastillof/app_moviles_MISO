@@ -144,7 +144,7 @@
                             android:layout_height="wrap_content"
                             android:inputType="text"
                             android:maxLength="100"
-                            android:hint="Fecha de lanzamiento (yyyy-mm-dd)"
+                            android:hint="Sello discografico"
                             android:textColorHint="@android:color/white"
                             android:textColor="@android:color/white"
                             android:background="@color/transparent"/>
