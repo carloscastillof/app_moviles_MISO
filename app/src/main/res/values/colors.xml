@@ -16,5 +16,6 @@
     <color name="green">#5EEECB</color>
     <color name="red">#FF0000</color>
     <color name="transparent">#00000000</color>
+    <color name="material3_dark_on_primary">#CDBDFA</color>
 
 </resources>

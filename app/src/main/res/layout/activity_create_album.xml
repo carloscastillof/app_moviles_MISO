@@ -179,25 +179,31 @@
                         android:orientation="horizontal"
                         android:layout_marginTop="16dp">
 
-                        <Button
+                        <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnCancelar"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Cancelar"
-                            android:textColor="@android:color/white"/>
+                            android:textColor="@android:color/white"
+                            android:backgroundTint="@color/material3_dark_on_primary"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            app:cornerRadius="20dp"/>
 
                         <View
                             android:layout_width="8dp"
                             android:layout_height="match_parent" />
 
-                        <Button
+                        <com.google.android.material.button.MaterialButton
                             android:id="@+id/btnGuardar"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Guardar"
-                            android:textColor="@android:color/white"/>
+                            android:textColor="@android:color/white"
+                            android:backgroundTint="@color/material3_dark_on_primary"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            app:cornerRadius="20dp"/>
                     </LinearLayout>
                 </LinearLayout>
             </RelativeLayout>
