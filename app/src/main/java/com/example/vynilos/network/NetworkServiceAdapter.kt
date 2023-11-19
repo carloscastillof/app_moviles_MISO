@@ -3,6 +3,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.vynilos.models.Album
 import com.example.vynilos.models.Artist
 import com.example.vynilos.models.Track
 import kotlinx.coroutines.CoroutineScope
@@ -67,5 +68,11 @@ class NetworkServiceAdapter {
                 }
             })
         }
+    }
+
+    fun createAlbum(album: Album): Call<Album> {
+        val service = getRetrofitInstance().create(ApiService::class.java)
+
+        return service.createAlbum("/albums", album.jsonPostString())
     }
 }

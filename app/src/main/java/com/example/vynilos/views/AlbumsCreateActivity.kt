@@ -1,5 +1,6 @@
 package com.example.vynilos.views
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
@@ -12,7 +13,11 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.example.vynilos.R
 import com.example.vynilos.databinding.ActivityCreateAlbumBinding
+import com.example.vynilos.models.Album
 import com.google.android.material.textfield.TextInputLayout
+import retrofit2.Callback
+import retrofit2.Call
+import retrofit2.Response
 
 class AlbumsCreateActivity : AppCompatActivity() {
 
@@ -73,24 +78,44 @@ class AlbumsCreateActivity : AppCompatActivity() {
 
         // Configurar clic en botón Cancelar
         btnCancelar.setOnClickListener {
-            // Crear un Intent para volver a AlbumsActivity
-            //val intent = Intent(this, AlbumsActivity::class.java)
-            //startActivity(intent)
-            //finish() // Cierra la actividad actual
-            view -> this.finish()
+            this.finish()
         }
 
         // Configurar clic en botón Guardar
         btnGuardar.setOnClickListener {
             // Aquí puedes obtener los valores de los EditText
+            val view= this
             val titulo = etTitulo.text.toString()
             val descripcion = etDescripcion.text.toString()
             val fechaLanzamiento = etFechaLanzamiento.text.toString()
             val genero = etGenero.text.toString()
+            val cover = etCoverImageUrl.text.toString()
             val selloDiscografico = etSelloDiscografico.text.toString()
 
-            // Aquí puedes implementar la lógica para guardar los datos del álbum
-            // Por ejemplo, enviarlos a una base de datos o realizar alguna acción
+            val album = Album(
+                id = null,
+                name=titulo,
+                description = descripcion,
+                cover = cover,
+                genre = genero,
+                recordLabel = selloDiscografico,
+                releaseDate = fechaLanzamiento
+            )
+
+            val call = album.create()
+
+            call.enqueue(object : Callback<Album> {
+                override fun onFailure(call: Call<Album>, t: Throwable) {
+                    //#Need to figureout how to handle error
+                }
+
+                override fun onResponse(call: Call<Album>, response: Response<Album>) {
+                    view.finish()
+                    val intent = Intent(view, AlbumsDetailActivity::class.java)
+                    intent.putExtra("albumId", response.body()?.id?.toString())
+                    view.startActivity(intent)
+                }
+            })
         }
     }
 

@@ -3,8 +3,11 @@ package com.example.vynilos.network
 import com.example.vynilos.models.Artist
 import com.example.vynilos.models.Album
 import com.example.vynilos.models.Track
+import com.google.gson.JsonObject
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Url
 
 interface ApiService {
@@ -22,4 +25,7 @@ interface ApiService {
 
     @GET
     fun getTrack(@Url url: String): Call<Track>
+
+    @POST
+    fun createAlbum(@Url url:String, @Body album: JsonObject): Call<Album>
 }
