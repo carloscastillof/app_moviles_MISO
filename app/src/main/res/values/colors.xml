@@ -14,5 +14,6 @@
     <color name="secondary_purple">#7300e6</color>
     <color name="tertiary_purple">#7000d1</color>
     <color name="green">#5EEECB</color>
+    <color name="grey_contrast">#808080</color>
 
 </resources>

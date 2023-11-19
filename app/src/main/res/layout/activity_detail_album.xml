@@ -90,19 +90,6 @@
 
         </com.google.android.material.tabs.TabLayout>
 
-        <ImageView
-            android:id="@+id/imagenView"
-            android:layout_width="282dp"
-            android:layout_height="252dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="150dp"
-            android:layout_marginEnd="63dp"
-            android:layout_marginBottom="15dp"
-            android:src="@drawable/construction"
-            app:civ_border_color="@color/white"
-            app:civ_border_width="1dp" />
-
         <FrameLayout
             android:id="@+id/tabContent"
             android:layout_width="match_parent"
@@ -112,6 +99,85 @@
                 android:id="@+id/tracksContent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+
+                <!-- Asignar Canción -->
+                <RelativeLayout
+                    android:id="@+id/tracksContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tabLayout"
+                    android:layout_marginTop="150dp">
+
+                    <!-- Tarjeta Superior -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardTracks"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="#16161B"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="2dp">
+
+                        <!-- LinearLayout con TextViews -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="15dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvTrackName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="36dp"
+                                tools:text="Decepciones"
+                                android:textColor="@color/primary_color"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                />
+
+                            <TextView
+                                android:id="@+id/tvTrackDuration"
+                                android:layout_width="64dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="250dp"
+                                android:layout_marginTop="-17dp"
+                                android:ellipsize="end"
+                                android:maxLines="2"
+                                android:textColor="@color/white"
+                                android:visibility="visible"
+                                tools:text="09:00" />
+
+                        </LinearLayout>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewTracks"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                        />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Tarjeta Inferior -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardTracks2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="130dp"
+                        app:cardBackgroundColor="#16161B"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="2dp">
+
+                        <!-- Información estática para Asignar Canción -->
+                        <TextView
+                            android:id="@+id/infoTextTracks2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="35dp"
+                            android:text="Texto informativo para Asignar Canción"
+                            android:textColor="#FFFFFF" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </RelativeLayout>
 
                 <Button
                     android:id="@+id/actionButton"
@@ -128,9 +194,15 @@
                     android:paddingEnd="20dp"
                     android:text="Asignar Canción"
                     android:textColor="@android:color/white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/comentariosContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <RelativeLayout
-                    android:id="@+id/comentariosContent"
+                    android:id="@+id/comentariosContainer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 

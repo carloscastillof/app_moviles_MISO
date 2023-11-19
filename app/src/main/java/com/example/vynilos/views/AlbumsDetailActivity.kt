@@ -13,7 +13,12 @@ import com.example.vynilos.databinding.ActivityDetailAlbumBinding
 import com.example.vynilos.viewmodels.AlbumDetailViewModel
 import com.squareup.picasso.Picasso
 import android.widget.Button
+import android.widget.RelativeLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.vynilos.models.Track
 import com.google.android.material.tabs.TabLayout
+import com.example.vynilos.views.adapters.TrackAdapter
 
 class AlbumsDetailActivity: AppCompatActivity() {
     private lateinit var binding: ActivityDetailAlbumBinding
@@ -26,18 +31,12 @@ class AlbumsDetailActivity: AppCompatActivity() {
         binding = ActivityDetailAlbumBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var albumId = intent.getStringExtra("albumId")
-        if (albumId != null) {
+        val albumId = intent.getStringExtra("albumId") ?: ""
+
+        if (albumId.isNotEmpty()) {
             initViewModel(albumId.toInt())
         }
         handleBackClick()
-
-        // Ejemplo de prueba Daniel
-
-        // val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
-        // val roleName = sharedPreferences.getString("role", "")
-        // val rolTextView = findViewById<TextView>(R.id.rol)
-        // rolTextView.text = roleName
 
         actionButton = findViewById(R.id.actionButton)
         actionButtonComentarios = findViewById(R.id.actionButtonComentarios)
@@ -58,11 +57,23 @@ class AlbumsDetailActivity: AppCompatActivity() {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab?.text == "Tracks") {
+
+                    findViewById<RelativeLayout>(R.id.tracksContainer).visibility = View.VISIBLE
+                    findViewById<RelativeLayout>(R.id.comentariosContainer).visibility = View.GONE
+
                     actionButton.visibility = if (roleName == "COLECCIONISTA") View.VISIBLE else View.GONE
                     actionButtonComentarios.visibility = View.GONE
+
+                    updateTrackCard(albumId)
+
                 } else if (tab?.text == "Comentarios") {
+
+                    findViewById<RelativeLayout>(R.id.tracksContainer).visibility = View.GONE
+                    findViewById<RelativeLayout>(R.id.comentariosContainer).visibility = View.VISIBLE
+
                     actionButton.visibility = View.GONE
                     actionButtonComentarios.visibility = if (roleName == "COLECCIONISTA") View.VISIBLE else View.GONE
+
                 }
             }
 
@@ -94,6 +105,25 @@ class AlbumsDetailActivity: AppCompatActivity() {
         })
 
         viewModel.makeApiCall(albumId)
+    }
+
+    private fun updateTrackCard(albumId: String) {
+
+        val trackAdapter = TrackAdapter()
+
+        val tracksList: List<Track> = obtenerTracksDelAlbum(albumId)
+
+        trackAdapter.setTracks(tracksList)
+
+        val recyclerView: RecyclerView = binding.cardTracks.findViewById(R.id.recyclerViewTracks)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = trackAdapter
+    }
+
+    private fun obtenerTracksDelAlbum(albumId: String): List<Track> {
+
+        return emptyList()
+
     }
 
 }
