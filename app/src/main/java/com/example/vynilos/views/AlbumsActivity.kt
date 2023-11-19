@@ -1,5 +1,6 @@
 package com.example.vynilos.views
 
+import android.content.Intent
 import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Editable
@@ -42,6 +43,11 @@ class AlbumsActivity : AppCompatActivity() {
         val agregarAlbumBtn = findViewById<Button>(R.id.agregaralbumbtn)
 
         agregarAlbumBtn.visibility = if (getRol() == ROL.COLECCIONISTA) View.VISIBLE else View.GONE
+
+        val gotoMusiciansBtn = findViewById<Button>(R.id.list_musicians)
+        gotoMusiciansBtn.setOnClickListener {
+            this.navegarListadoMusicos()
+        }
         val etSearch = findViewById<EditText>(R.id.etSearch)
         etSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -84,4 +90,12 @@ class AlbumsActivity : AppCompatActivity() {
     private fun showError() {
         Toast.makeText(this, "Ha ocurrido un error", Toast.LENGTH_SHORT).show()
     }
+
+    fun navegarListadoMusicos() {
+        val intent = Intent(this, MusiciansActivity::class.java).apply {
+        }
+        startActivity(intent)
+    }
+
+    fun navegarAddAlbum(view: View) {}
 }

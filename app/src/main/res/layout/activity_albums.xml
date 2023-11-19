@@ -37,11 +37,24 @@
                 android:drawableLeft="@android:drawable/ic_input_add"
                 android:drawablePadding="5dp"
                 android:gravity="center_vertical"
-                android:onClick="onAddAlbumClick"
+                android:onClick="navegarAddAlbum"
                 android:padding="2dp"
                 android:paddingEnd="8dp"
                 android:text="Agregar un álbum"
                 android:textColor="@android:color/white" />
+
+            <Space
+                android:layout_width="18dp"
+                android:layout_height="39dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/list_musicians"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#D0BCFF"
+                android:text="Músicos"
+                />
 
         </LinearLayout>
 
