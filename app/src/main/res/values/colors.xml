@@ -15,7 +15,10 @@
     <color name="tertiary_purple">#7000d1</color>
     <color name="green">#5EEECB</color>
     <color name="red">#FF0000</color>
-    <color name="transparent">#00000000</color>
+    <color name="transparent">#36343A</color>
     <color name="material3_dark_on_primary">#CDBDFA</color>
+    <color name="purple_button_text">#341F6E</color>
+    <color name="form_background">#252328</color>
+
 
 </resources>
