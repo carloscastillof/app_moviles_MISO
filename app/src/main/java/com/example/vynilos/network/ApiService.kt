@@ -12,4 +12,10 @@ interface ApiService {
 
     @GET
     fun getAlbum(@Url url:String):Call<Album>
+
+    @GET
+    fun getArtist(@Url url:String):Call<Artist>
+
+    @GET("/bands")
+    fun getMusicians(): Call<List<Artist>>
 }

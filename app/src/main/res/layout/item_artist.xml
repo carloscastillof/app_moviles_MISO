@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="96dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/background"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:layout_marginBottom="15dp"
+    android:orientation="horizontal">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ivArtistImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="9dp"
+        app:civ_border_width="1dp"
+        app:civ_border_color="@color/white"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvArtistName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Soda Estereo"
+            android:textColor="@color/primary_color"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/tvArtistDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:layout_marginTop="6dp"
+
+            android:textColor="@color/secondary_color"
+            tools:text="Luego de definir los modelos de datos, es necesario conectar las fuentes de datos del componente encargado de la red con la interfaz gráfica. Para esto, desde Android Studio cree un directorio viewmodels en el código fuente de la aplicación, haga clic derecho en él y con la opción New > Kotlin File/Class agregue un archivo para cada una de las entidades para las cuales creó un modelo, es decir, un ViewModel para los álbumes, otro para los coleccionistas y otro para los comentarios.
+" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -30,18 +30,35 @@
 
             <Button
                 android:id="@+id/agregaralbumbtn"
-                android:layout_width="wrap_content"
+                android:layout_width="182dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:background="#D0BCFF"
                 android:drawableLeft="@android:drawable/ic_input_add"
                 android:drawablePadding="5dp"
                 android:gravity="center_vertical"
-                android:onClick="onAddAlbumClick"
+                android:onClick="navegarAddAlbum"
                 android:padding="2dp"
                 android:paddingEnd="8dp"
                 android:text="Agregar un álbum"
                 android:textColor="@android:color/white" />
+            <Button
+                android:id="@+id/list_musicians"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#D0BCFF"
+                android:drawableLeft="@android:drawable/ic_input_add"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:padding="2dp"
+                android:paddingEnd="6dp"
+                android:text="Ver listado de bandas"
+                android:textColor="@android:color/white" />
+
+            <Space
+                android:layout_width="18dp"
+                android:layout_height="39dp"
+                android:layout_weight="1" />
 
         </LinearLayout>
 
