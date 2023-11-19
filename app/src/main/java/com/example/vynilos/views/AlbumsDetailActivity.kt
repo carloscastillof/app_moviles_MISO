@@ -2,6 +2,7 @@ package com.example.vynilos.views
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.activity.viewModels
@@ -13,18 +14,30 @@ import com.example.vynilos.databinding.ActivityDetailAlbumBinding
 import com.example.vynilos.viewmodels.AlbumDetailViewModel
 import com.squareup.picasso.Picasso
 import android.widget.Button
+import android.widget.RelativeLayout
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.vynilos.databinding.ItemTrackBinding
+import com.example.vynilos.viewmodels.AlbumsActivityViewModel
 import com.example.vynilos.viewmodels.ArtistDetailViewModel
+import com.example.vynilos.viewmodels.TrackDetailViewModel
+import com.example.vynilos.views.adapters.AlbumAdapter
+import com.example.vynilos.views.adapters.TrackAdapter
 import com.google.android.material.tabs.TabLayout
 
 class AlbumsDetailActivity: AppCompatActivity() {
     private lateinit var binding: ActivityDetailAlbumBinding
+    private lateinit var trackbinding : ItemTrackBinding
     private val viewModel: AlbumDetailViewModel by viewModels()
+    private val viewModelTrack: TrackDetailViewModel by viewModels()
     private lateinit var actionButton: Button
     private lateinit var actionButtonComentarios: Button
+    private lateinit var adapter: TrackAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailAlbumBinding.inflate(layoutInflater)
+        trackbinding = ItemTrackBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         var albumId = intent.getStringExtra("albumId")
@@ -32,13 +45,6 @@ class AlbumsDetailActivity: AppCompatActivity() {
             initViewModel(albumId.toInt())
         }
         handleBackClick()
-
-        // Ejemplo de prueba Daniel
-
-        // val sharedPreferences = getSharedPreferences("user", MODE_PRIVATE)
-        // val roleName = sharedPreferences.getString("role", "")
-        // val rolTextView = findViewById<TextView>(R.id.rol)
-        // rolTextView.text = roleName
 
         actionButton = findViewById(R.id.actionButton)
         actionButtonComentarios = findViewById(R.id.actionButtonComentarios)
@@ -59,11 +65,28 @@ class AlbumsDetailActivity: AppCompatActivity() {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab?.text == "Tracks") {
+                    /*var albumId = intent.getStringExtra("albumId")
+                    if (albumId != null) {
+                        Log.i("albumIdTrack", albumId.toString())
+                        initViewModelTrack(albumId.toInt())
+                    }
+
+                    handleBackClick()*/
+
                     actionButton.visibility = if (roleName == "COLECCIONISTA") View.VISIBLE else View.GONE
                     actionButtonComentarios.visibility = View.GONE
+
+                    /*findViewById<RelativeLayout>(R.id.tracksContent).visibility = View.VISIBLE
+                    findViewById<RelativeLayout>(R.id.comentariosContent).visibility = View.GONE*/
+
                 } else if (tab?.text == "Comentarios") {
+
                     actionButton.visibility = View.GONE
                     actionButtonComentarios.visibility = if (roleName == "COLECCIONISTA") View.VISIBLE else View.GONE
+
+                    /*findViewById<RelativeLayout>(R.id.tracksContent).visibility = View.GONE
+                    findViewById<RelativeLayout>(R.id.comentariosContent).visibility = View.VISIBLE*/
+
                 }
             }
 
@@ -75,13 +98,11 @@ class AlbumsDetailActivity: AppCompatActivity() {
         })
 
     }
-
     private fun handleBackClick() {
         binding.toolbar.leftIcon.setOnClickListener { view ->
             this.finish()
         }
     }
-
     private fun initViewModel(albumId: Number ) {
         val viewModel = ViewModelProvider(this).get(AlbumDetailViewModel::class.java)
         viewModel.getLiveDataObserver().observe(this, Observer {
@@ -93,8 +114,18 @@ class AlbumsDetailActivity: AppCompatActivity() {
 
             Picasso.get().load(it.cover).into(binding.ivCover)
         })
-
         viewModel.makeApiCall(albumId)
+    }
+
+    private fun initViewModelTrack(albumId: Number ) {
+        val viewModelTrack = ViewModelProvider(this).get(TrackDetailViewModel::class.java)
+        viewModelTrack.getLiveDataObserver().observe(this, Observer {
+            Log.i("TrackName", trackbinding.tvTrackName.text.toString())
+            trackbinding.tvTrackName.text = it.name
+            trackbinding.tvTrackDuration.text = it.duration
+
+        })
+        viewModelTrack.makeApiCall(albumId)
     }
 
 }
