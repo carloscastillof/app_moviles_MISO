@@ -1,10 +1,8 @@
 package com.example.vynilos
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import com.example.vynilos.enums.ROL
 import com.example.vynilos.views.AlbumsActivity
@@ -19,14 +17,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun bindMenuEvents() {
         val btnColeccionista: Button = findViewById(R.id.btn_coleccionista)
-        btnColeccionista.setOnClickListener { view ->
+        btnColeccionista.setOnClickListener {
             saveRol(ROL.COLECCIONISTA)
-            openAlbumListView(view)
+            openAlbumListView()
         }
         val btnUsuario: Button = findViewById(R.id.btn_usuario)
-        btnUsuario.setOnClickListener { view ->
+        btnUsuario.setOnClickListener {
             saveRol(ROL.USUARIO)
-            openAlbumListView(view)
+            openAlbumListView()
         }
     }
 
@@ -37,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         editor.apply()
     }
 
-    private fun openAlbumListView(view: View) {
+    private fun openAlbumListView() {
         val intent = Intent(this, AlbumsActivity::class.java).apply {
         }
         startActivity(intent)

@@ -10,7 +10,6 @@ import com.example.vynilos.R
 import com.example.vynilos.databinding.ItemTrackBinding
 import com.example.vynilos.models.Track
 import com.example.vynilos.views.AlbumsDetailActivity
-import com.example.vynilos.views.ArtistDetailActivity
 
 
 const val trackId = "com.example.vynilos.trackId"

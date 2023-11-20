@@ -10,7 +10,6 @@
     <RelativeLayout
         android:layout_width="408dp"
         android:layout_height="259dp"
-        android:background="@color/background"
         android:orientation="vertical"
         android:id="@+id/principal"
         tools:layout_editor_absoluteX="1dp"

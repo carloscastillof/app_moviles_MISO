@@ -1,7 +1,6 @@
 package com.example.vynilos.views
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -75,7 +74,7 @@ class AlbumsActivity : AppCompatActivity() {
     }
 
     private fun handleBackClick() {
-        binding.toolbar.leftIcon.setOnClickListener { view ->
+        binding.toolbar.leftIcon.setOnClickListener {
             this.finish()
         }
     }
@@ -112,5 +111,5 @@ class AlbumsActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun navegarAddAlbum(view: View) {}
+    fun navegarAddAlbum() {}
 }
