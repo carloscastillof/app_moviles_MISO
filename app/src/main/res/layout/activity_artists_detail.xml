@@ -94,18 +94,5 @@
             android:layout_margin="15dp"
             android:textColor="@color/white"
             tools:text="Lorem ipsum dolor sitor nec elit. Mauris lobortis, lorem eu imperdiet egestas, neque ex tristique dui, et blandit orci lacus vitae nunc. Morbi congue lacus ac nisi laoreet, ac gravida mi facilisis. Nullam vulputate dui est, eget luctus turpis posuere vitae. Integer elementum erat in urna sollicitudin ullamcorper. Donec egestas tincidunt lectus, et convallis velit. Donec venenatis risus odio, nec consectetur purus faucibus non. Curabitur scelerisque neque eu enim pulvinar tempor."/>
-
-        <Button
-            android:id="@+id/agregaralbumbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvDescription"
-            android:layout_margin="15dp"
-            android:background="#D0BCFF"
-            android:drawableLeft="@android:drawable/ic_input_add"
-            android:gravity="center"
-            android:onClick="onAddAlbumClick"
-            android:text="Álbum"
-            android:textColor="@android:color/white" />
     </RelativeLayout>
 </RelativeLayout>
