@@ -2,19 +2,12 @@ package com.example.vynilos.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.vynilos.R
-import com.example.vynilos.databinding.ActivityAlbumsBinding
 import com.example.vynilos.databinding.ActivityMusiciansBinding
-import com.example.vynilos.viewmodels.AlbumsActivityViewModel
 import com.example.vynilos.viewmodels.MusiciansViewModel
-import com.example.vynilos.views.adapters.AlbumAdapter
 import com.example.vynilos.views.adapters.MusicianAdapter
-import org.w3c.dom.Text
 
 class MusiciansActivity : AppCompatActivity() {
 

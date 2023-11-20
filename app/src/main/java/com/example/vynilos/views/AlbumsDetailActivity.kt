@@ -14,14 +14,8 @@ import com.example.vynilos.databinding.ActivityDetailAlbumBinding
 import com.example.vynilos.viewmodels.AlbumDetailViewModel
 import com.squareup.picasso.Picasso
 import android.widget.Button
-import android.widget.RelativeLayout
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.vynilos.databinding.ItemTrackBinding
-import com.example.vynilos.viewmodels.AlbumsActivityViewModel
-import com.example.vynilos.viewmodels.ArtistDetailViewModel
 import com.example.vynilos.viewmodels.TrackDetailViewModel
-import com.example.vynilos.views.adapters.AlbumAdapter
 import com.example.vynilos.views.adapters.TrackAdapter
 import com.google.android.material.tabs.TabLayout
 

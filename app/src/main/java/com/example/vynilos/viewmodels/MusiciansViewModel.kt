@@ -7,7 +7,6 @@ import com.example.vynilos.models.Artist
 import com.example.vynilos.repositories.ArtistRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 class MusiciansViewModel: ViewModel() {
