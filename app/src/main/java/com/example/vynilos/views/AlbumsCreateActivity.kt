@@ -90,6 +90,19 @@ class AlbumsCreateActivity : AppCompatActivity() {
             processForm()
         }
     }
+    private fun validateDateFormat(date: String): Boolean {
+        val regex = """^\d{4}-\d{2}-\d{2}$""".toRegex()
+        return regex.matches(date)
+    }
+
+    private fun validateGenre(genre: String): Boolean {
+        return genre.equals("Salsa", ignoreCase = true) || genre.equals("Classical", ignoreCase = true) || genre.equals("Rock", ignoreCase = true) || genre.equals("Folk", ignoreCase = true)
+    }
+
+    private fun validateRecordLabel(recordLabel: String): Boolean {
+        return recordLabel.equals("EMI", ignoreCase = true) || recordLabel.equals("Sony Music", ignoreCase = true) || recordLabel.equals("Discos Fuentes", ignoreCase = true) || recordLabel.equals("Elektra", ignoreCase = true) || recordLabel.equals("Fania Records", ignoreCase = true)
+    }
+
     private fun processForm(){
 
         val view= this
@@ -109,6 +122,22 @@ class AlbumsCreateActivity : AppCompatActivity() {
             recordLabel = selloDiscografico,
             releaseDate = fechaLanzamiento
         )
+        if (!validateDateFormat(fechaLanzamiento)) {
+            etFechaLanzamiento.error = "Formato de fecha no válido. Utiliza el formato yyyy-mm-dd."
+            return
+        }
+
+        // Validar género
+        if (!validateGenre(genero)) {
+            etGenero.error = "Género no válido. Por favor, elige entre Salsa, Classical, Rock o Folk."
+            return
+        }
+
+        // Validar sello discográfico
+        if (!validateRecordLabel(selloDiscografico)) {
+            etSelloDiscografico.error = "Sello discográfico no válido. Por favor, elige entre EMI, Sony Music, Discos Fuentes, Elektra o Fania Records."
+            return
+        }
         Log.i("JSON enviado", album.jsonPostString().toString())
         val call = album.create()
         Log.i("call creado", call.toString())

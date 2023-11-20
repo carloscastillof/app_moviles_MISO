@@ -171,6 +171,14 @@
                             android:background="@color/transparent"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
+                    <TextView
+                        android:id="@+id/tvErrors"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text=""
+                        android:textColor="@color/red"
+                        android:textSize="16dp" />
 
                     <!-- Botones Cancelar y Guardar -->
                     <LinearLayout
