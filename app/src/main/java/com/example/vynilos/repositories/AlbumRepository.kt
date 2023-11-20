@@ -11,7 +11,7 @@ import retrofit2.Response
 
 class AlbumRepository {
     private var service = NetworkServiceAdapter.getRetrofitInstance().create(ApiService::class.java)
-
+    private var serviceAdapter = NetworkServiceAdapter()
     fun getAlbums(liveDataList: MutableLiveData<List<Album>>) {
         val call = service.getAlbums("/albums")
         Log.d("ApiService", "URL para getAlbums: /albums")
@@ -38,5 +38,8 @@ class AlbumRepository {
                 liveDataList.postValue(response.body())
             }
         })
+    }
+    fun createAlbum(album: Album): Call<Album> {
+        return serviceAdapter.createAlbum(album)
     }
 }

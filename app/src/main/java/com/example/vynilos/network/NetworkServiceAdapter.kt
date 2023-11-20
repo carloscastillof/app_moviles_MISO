@@ -3,7 +3,9 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.example.vynilos.models.Album
 import com.example.vynilos.models.Artist
+import com.example.vynilos.models.Track
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -47,5 +49,30 @@ class NetworkServiceAdapter {
                 }
             })
         }
+    }
+
+    fun getTrack(liveDataList: MutableLiveData<Track>, albumId: Number) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val service = getRetrofitInstance().create(ApiService::class.java)
+            val call = service.getTrack("/albums/$albumId/tracks")
+
+            call.enqueue(object : Callback<Track> {
+                override fun onFailure(call: Call<Track>, t: Throwable) {
+                }
+
+                override fun onResponse(call: Call<Track>, response: Response<Track>) {
+                    Handler(Looper.getMainLooper()).post {
+                        Log.i("getTrackAdapter", response.body().toString())
+                        liveDataList.postValue(response.body())
+                    }
+                }
+            })
+        }
+    }
+
+    fun createAlbum(album: Album): Call<Album> {
+        Log.i("album_creado", album.toString())
+        val service = getRetrofitInstance().create(ApiService::class.java)
+        return service.createAlbum("/albums", album.jsonPostString())
     }
 }

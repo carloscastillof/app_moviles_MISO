@@ -63,6 +63,11 @@ class AlbumsActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {
             }
         })
+
+        agregarAlbumBtn.setOnClickListener {
+            val intent = Intent(this, AlbumsCreateActivity::class.java)
+            startActivity(intent)
+        }
    }
 
     private fun setToolbarText() {
