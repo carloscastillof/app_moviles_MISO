@@ -99,7 +99,7 @@ class AlbumsDetailActivity: AppCompatActivity() {
 
     }
     private fun handleBackClick() {
-        binding.toolbar.leftIcon.setOnClickListener { view ->
+        binding.toolbar.leftIcon.setOnClickListener {
             this.finish()
         }
     }

@@ -19,14 +19,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun bindMenuEvents() {
         val btnColeccionista: Button = findViewById(R.id.btn_coleccionista)
-        btnColeccionista.setOnClickListener { view ->
+        btnColeccionista.setOnClickListener {
             saveRol(ROL.COLECCIONISTA)
-            openAlbumListView(view)
+            openAlbumListView()
         }
         val btnUsuario: Button = findViewById(R.id.btn_usuario)
         btnUsuario.setOnClickListener { view ->
             saveRol(ROL.USUARIO)
-            openAlbumListView(view)
+            openAlbumListView()
         }
     }
 
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         editor.apply()
     }
 
-    private fun openAlbumListView(view: View) {
+    private fun openAlbumListView() {
         val intent = Intent(this, AlbumsActivity::class.java).apply {
         }
         startActivity(intent)

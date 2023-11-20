@@ -75,7 +75,7 @@ class AlbumsActivity : AppCompatActivity() {
     }
 
     private fun handleBackClick() {
-        binding.toolbar.leftIcon.setOnClickListener { view ->
+        binding.toolbar.leftIcon.setOnClickListener {
             this.finish()
         }
     }
@@ -112,5 +112,5 @@ class AlbumsActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun navegarAddAlbum(view: View) {}
+    fun navegarAddAlbum() {}
 }
