@@ -109,7 +109,7 @@ class AlbumsCreateActivity : AppCompatActivity() {
             recordLabel = selloDiscografico,
             releaseDate = fechaLanzamiento
         )
-
+        Log.i("JSON enviado", album.jsonPostString().toString())
         val call = album.create()
         Log.i("call creado", call.toString())
 
@@ -121,10 +121,17 @@ class AlbumsCreateActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<Album>, response: Response<Album>) {
                 Log.i("onResponse call", call.toString())
-                view.finish()
-                val intent = Intent(view, AlbumsDetailActivity::class.java)
-                intent.putExtra("albumId", response.body()?.id?.toString())
-                view.startActivity(intent)
+
+                if (response.isSuccessful) {
+                    val album = response.body()
+                    Log.i("response_create_album", album.toString())
+
+                    val intent = Intent(view, AlbumsDetailActivity::class.java)
+                    intent.putExtra("albumId", album?.id?.toString())
+                    view.startActivity(intent)
+                } else {
+                    Log.e("onResponse error", "Error en la respuesta: ${response.code()}")
+                }
             }
         })
     }
