@@ -12,7 +12,7 @@ data class Album (
     val releaseDate:String,
     val description:String,
     val genre:String,
-    val recordLabel:String,
+    val recordLabel:String
 ){
 
     private val albumsRepository = AlbumRepository()

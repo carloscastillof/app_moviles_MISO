@@ -6,6 +6,7 @@ import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -81,42 +82,51 @@ class AlbumsCreateActivity : AppCompatActivity() {
             this.finish()
         }
 
-        // Configurar clic en botón Guardar
-        btnGuardar.setOnClickListener {
-            // Aquí puedes obtener los valores de los EditText
-            val view= this
-            val titulo = etTitulo.text.toString()
-            val descripcion = etDescripcion.text.toString()
-            val fechaLanzamiento = etFechaLanzamiento.text.toString()
-            val genero = etGenero.text.toString()
-            val cover = etCoverImageUrl.text.toString()
-            val selloDiscografico = etSelloDiscografico.text.toString()
-
-            val album = Album(
-                id = null,
-                name=titulo,
-                description = descripcion,
-                cover = cover,
-                genre = genero,
-                recordLabel = selloDiscografico,
-                releaseDate = fechaLanzamiento
-            )
-
-            val call = album.create()
-
-            call.enqueue(object : Callback<Album> {
-                override fun onFailure(call: Call<Album>, t: Throwable) {
-                    //#Need to figureout how to handle error
-                }
-
-                override fun onResponse(call: Call<Album>, response: Response<Album>) {
-                    view.finish()
-                    val intent = Intent(view, AlbumsDetailActivity::class.java)
-                    intent.putExtra("albumId", response.body()?.id?.toString())
-                    view.startActivity(intent)
-                }
-            })
+        setSaveButton()
+    }
+    private fun setSaveButton() {
+        binding.btnGuardar.setOnClickListener {
+            Log.i("Oprime boton guardar", btnGuardar.toString())
+            processForm()
         }
+    }
+    private fun processForm(){
+
+        val view= this
+        val titulo = etTitulo.text.toString()
+        val descripcion = etDescripcion.text.toString()
+        val fechaLanzamiento = etFechaLanzamiento.text.toString()
+        val genero = etGenero.text.toString()
+        val cover = etCoverImageUrl.text.toString()
+        val selloDiscografico = etSelloDiscografico.text.toString()
+
+        val album = Album(
+            id = null,
+            name=titulo,
+            description = descripcion,
+            cover = cover,
+            genre = genero,
+            recordLabel = selloDiscografico,
+            releaseDate = fechaLanzamiento
+        )
+
+        val call = album.create()
+        Log.i("call creado", call.toString())
+
+        call.enqueue(object : Callback<Album> {
+            override fun onFailure(call: Call<Album>, t: Throwable) {
+                Log.i("onFailure call", call.toString())
+                //#Need to figureout how to handle error
+            }
+
+            override fun onResponse(call: Call<Album>, response: Response<Album>) {
+                Log.i("onResponse call", call.toString())
+                view.finish()
+                val intent = Intent(view, AlbumsDetailActivity::class.java)
+                intent.putExtra("albumId", response.body()?.id?.toString())
+                view.startActivity(intent)
+            }
+        })
     }
 
     private fun setToolbarText() {

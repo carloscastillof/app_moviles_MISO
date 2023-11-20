@@ -71,8 +71,8 @@ class NetworkServiceAdapter {
     }
 
     fun createAlbum(album: Album): Call<Album> {
+        Log.i("album_creado", album.toString())
         val service = getRetrofitInstance().create(ApiService::class.java)
-
         return service.createAlbum("/albums", album.jsonPostString())
     }
 }
