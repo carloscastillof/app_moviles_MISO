@@ -6,7 +6,7 @@ import com.example.vynilos.models.Album
 import com.example.vynilos.repositories.AlbumRepository
 
 class AlbumDetailViewModel: ViewModel() {
-    lateinit var liveData: MutableLiveData<Album>
+    var liveData: MutableLiveData<Album>
     private val albumsRepository = AlbumRepository()
 
     init {
