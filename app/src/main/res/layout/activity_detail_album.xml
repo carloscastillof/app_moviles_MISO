@@ -73,7 +73,7 @@
 
     <RelativeLayout
         android:layout_width="409dp"
-        android:layout_height="469dp"
+        android:layout_height="150dp"
         android:layout_below="@id/principal"
         android:layout_marginTop="-2dp"
         android:orientation="vertical"
@@ -96,19 +96,6 @@
                 android:text="Comentarios" />
 
         </com.google.android.material.tabs.TabLayout>
-
-        <ImageView
-            android:id="@+id/imagenView"
-            android:layout_width="282dp"
-            android:layout_height="252dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="150dp"
-            android:layout_marginEnd="63dp"
-            android:layout_marginBottom="15dp"
-            android:src="@drawable/construction"
-            app:civ_border_color="@color/white"
-            app:civ_border_width="1dp" />
 
         <FrameLayout
             android:id="@+id/tabContent"
@@ -134,6 +121,18 @@
                     android:paddingEnd="20dp"
                     android:text="@string/tie_track_to_album"
                     android:textColor="@android:color/white" />
+                <TextView
+                    android:id="@+id/list_tracks_to_album"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="110dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:text=""
+                    android:textColor="@color/white"
+                    android:textSize="21sp" />
+
 
                 <RelativeLayout
                     android:id="@+id/comentariosContent"
@@ -164,4 +163,9 @@
 
     </RelativeLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTracks"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="375dp" />
 </RelativeLayout>

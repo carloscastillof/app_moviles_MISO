@@ -14,32 +14,31 @@ import com.example.vynilos.databinding.ActivityDetailAlbumBinding
 import com.example.vynilos.viewmodels.AlbumDetailViewModel
 import com.squareup.picasso.Picasso
 import android.widget.Button
-import com.example.vynilos.databinding.ItemTrackBinding
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.vynilos.viewmodels.TrackDetailViewModel
 import com.example.vynilos.views.adapters.TrackAdapter
 import com.google.android.material.tabs.TabLayout
 
 class AlbumsDetailActivity: AppCompatActivity() {
     private lateinit var binding: ActivityDetailAlbumBinding
-    private lateinit var trackbinding : ItemTrackBinding
     private val viewModel: AlbumDetailViewModel by viewModels()
     private val viewModelTrack: TrackDetailViewModel by viewModels()
     private lateinit var actionButton: Button
     private lateinit var actionButtonComentarios: Button
     private lateinit var adapter: TrackAdapter
+    private var isTracksTabInitialized = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailAlbumBinding.inflate(layoutInflater)
-        trackbinding = ItemTrackBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         var albumId = intent.getStringExtra("albumId")
         if (albumId != null) {
             initViewModel(albumId.toInt())
-            bindAlbumDetailEvents(albumId)
         }
         handleBackClick()
+        initRecyclerView()
 
         actionButton = findViewById(R.id.btn_tie_track_to_album)
         actionButtonComentarios = findViewById(R.id.actionButtonComentarios)
@@ -60,22 +59,19 @@ class AlbumsDetailActivity: AppCompatActivity() {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab?.text == "Tracks") {
-                    /*var albumId = intent.getStringExtra("albumId")
-                    if (albumId != null) {
-                        Log.i("albumIdTrack", albumId.toString())
-                        initViewModelTrack(albumId.toInt())
-                    }
-
-                    handleBackClick()*/
-
                     actionButton.visibility = if (roleName == "COLECCIONISTA") View.VISIBLE else View.GONE
                     actionButtonComentarios.visibility = View.GONE
-
-                    /*findViewById<RelativeLayout>(R.id.tracksContent).visibility = View.VISIBLE
-                    findViewById<RelativeLayout>(R.id.comentariosContent).visibility = View.GONE*/
-
+                    if (!isTracksTabInitialized) {
+                        if (albumId != null) {
+                            initViewModel(albumId.toInt())
+                            bindAlbumDetailEvents(albumId)
+                            initRecyclerView()
+                            isTracksTabInitialized = true
+                        }
+                    }
+                    binding.rvTracks.visibility = View.VISIBLE
                 } else if (tab?.text == "Comentarios") {
-
+                    binding.rvTracks.visibility = View.GONE
                     actionButton.visibility = View.GONE
                     actionButtonComentarios.visibility = if (roleName == "COLECCIONISTA") View.VISIBLE else View.GONE
 
@@ -112,29 +108,25 @@ class AlbumsDetailActivity: AppCompatActivity() {
         intent.putExtra("albumId", albumId )
         startActivity(intent)
     }
+    private fun initRecyclerView() {
+        adapter = TrackAdapter()
+        binding.rvTracks.layoutManager = LinearLayoutManager(this)
+        binding.rvTracks.adapter = adapter
+    }
     private fun initViewModel(albumId: Number ) {
         val viewModel = ViewModelProvider(this).get(AlbumDetailViewModel::class.java)
         viewModel.getLiveDataObserver().observe(this, Observer {
+            adapter.setTracks(it.tracks.toList())
+            adapter.notifyDataSetChanged()
+            for (item in it.tracks) println(item.name)
             binding.title.text = it.name
             binding.gender.text = it.genre
-
             val year = it.releaseDate.substring(0, 4)
             binding.date.text = year
-
             Picasso.get().load(it.cover).into(binding.ivCover)
         })
         viewModel.makeApiCall(albumId)
     }
 
-    private fun initViewModelTrack(albumId: Number ) {
-        val viewModelTrack = ViewModelProvider(this).get(TrackDetailViewModel::class.java)
-        viewModelTrack.getLiveDataObserver().observe(this, Observer {
-            Log.i("TrackName", trackbinding.tvTrackName.text.toString())
-            trackbinding.tvTrackName.text = it.name
-            trackbinding.tvTrackDuration.text = it.duration
-
-        })
-        viewModelTrack.makeApiCall(albumId)
-    }
 
 }

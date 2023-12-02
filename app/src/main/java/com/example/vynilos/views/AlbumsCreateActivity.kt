@@ -120,7 +120,8 @@ class AlbumsCreateActivity : AppCompatActivity() {
             cover = cover,
             genre = genero,
             recordLabel = selloDiscografico,
-            releaseDate = fechaLanzamiento
+            releaseDate = fechaLanzamiento,
+            tracks = emptyArray()
         )
         if (!validateDateFormat(fechaLanzamiento)) {
             etFechaLanzamiento.error = "Formato de fecha no válido. Utiliza el formato yyyy-mm-dd."
