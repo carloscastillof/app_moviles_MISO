@@ -28,7 +28,7 @@ class AlbumsCommentsActivity : AppCompatActivity() {
 
         setToolbarText()
         handleBackClick()
-        val postButton: Button = findViewById(R.id.actionButtonComentarios)
+        val postButton: Button = findViewById(R.id.btn_create_comment_to_album)
 
         postButton.setOnClickListener {
             val descriptionTxt : TextInputEditText = findViewById(R.id.txt_descripcion)
