@@ -6,6 +6,8 @@ import androidx.lifecycle.MutableLiveData
 import com.example.vynilos.models.Album
 import com.example.vynilos.models.Artist
 import com.example.vynilos.models.Track
+import com.example.vynilos.models.Comment
+import com.google.gson.JsonObject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -73,5 +75,11 @@ class NetworkServiceAdapter {
         Log.i("album_creado", album.toString())
         val service = getRetrofitInstance().create(ApiService::class.java)
         return service.createAlbum("/albums", album.jsonPostString())
+    }
+
+    fun createComment(comment: Comment): Call<Comment> {
+        Log.i("Comentario creado", comment.toString())
+        val service = getRetrofitInstance().create(ApiService::class.java)
+        return service.createComment("/comments", comment.jsonPostString())
     }
 }

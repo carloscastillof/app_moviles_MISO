@@ -2,6 +2,7 @@ package com.example.vynilos.network
 
 import com.example.vynilos.models.Artist
 import com.example.vynilos.models.Album
+import com.example.vynilos.models.Comment
 import com.example.vynilos.models.Track
 import com.google.gson.JsonObject
 import retrofit2.Call
@@ -28,4 +29,12 @@ interface ApiService {
 
     @POST
     fun createAlbum(@Url url:String, @Body album: JsonObject): Call<Album>
+
+    @POST
+    fun createComment(@Url url:String, @Body comment: JsonObject): Call<JsonObject>
+
+    @GET
+    fun getComment(@Url url:String): Call<Comment>
+
+
 }

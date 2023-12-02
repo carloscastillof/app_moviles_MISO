@@ -66,7 +66,6 @@ class AlbumsDetailActivity: AppCompatActivity() {
                     }
 
                     handleBackClick()*/
-
                     actionButton.visibility = if (roleName == "COLECCIONISTA") View.VISIBLE else View.GONE
                     actionButtonComentarios.visibility = View.GONE
 
