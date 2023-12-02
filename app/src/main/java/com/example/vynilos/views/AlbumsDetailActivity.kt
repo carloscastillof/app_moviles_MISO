@@ -37,10 +37,11 @@ class AlbumsDetailActivity: AppCompatActivity() {
         var albumId = intent.getStringExtra("albumId")
         if (albumId != null) {
             initViewModel(albumId.toInt())
+            bindAlbumDetailEvents(albumId)
         }
         handleBackClick()
 
-        actionButton = findViewById(R.id.actionButton)
+        actionButton = findViewById(R.id.btn_tie_track_to_album)
         actionButtonComentarios = findViewById(R.id.actionButtonComentarios)
 
         val tabLayout = binding.tabLayout
@@ -96,6 +97,31 @@ class AlbumsDetailActivity: AppCompatActivity() {
             this.finish()
         }
     }
+    private fun bindAlbumDetailEvents(albumId: String) {
+        val trackTiedToAlbumButton: Button = findViewById(R.id.btn_tie_track_to_album)
+        trackTiedToAlbumButton.setOnClickListener { view ->
+            openTrackTiedToAlbumView(view, albumId)
+        }
+        val commentTiedToAlbumButton: Button = findViewById(R.id.actionButtonComentarios)
+        commentTiedToAlbumButton.setOnClickListener { view ->
+            openCommentTiedToAlbumView(view, albumId)
+        }
+    }
+    private fun openTrackTiedToAlbumView(view: View, albumId:String) {
+        Log.i("tiedToAlbum", albumId)
+        val intent = Intent(this, AlbumsTracksActivity::class.java).apply {
+        }
+        intent.putExtra("albumId", albumId )
+        startActivity(intent)
+    }
+    private fun openCommentTiedToAlbumView(view: View, albumId:String) {
+        Log.i("tiedToAlbumComment", albumId)
+        val intent = Intent(this, AlbumsCommentsActivity::class.java).apply {
+        }
+        Log.i("intent", intent.toString())
+        intent.putExtra("albumId", albumId )
+        startActivity(intent)
+    }
     private fun initViewModel(albumId: Number ) {
         val viewModel = ViewModelProvider(this).get(AlbumDetailViewModel::class.java)
         viewModel.getLiveDataObserver().observe(this, Observer {
@@ -120,5 +146,6 @@ class AlbumsDetailActivity: AppCompatActivity() {
         })
         viewModelTrack.makeApiCall(albumId)
     }
+
 
 }

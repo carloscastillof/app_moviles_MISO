@@ -11,7 +11,6 @@ import com.example.vynilos.databinding.ItemTrackBinding
 import com.example.vynilos.models.Track
 import com.example.vynilos.views.AlbumsDetailActivity
 
-
 const val trackId = "com.example.vynilos.trackId"
 class TrackAdapter : RecyclerView.Adapter<TrackAdapter.TrackHolder>() {
     private var tracks: List<Track>? = null
@@ -42,19 +41,15 @@ class TrackAdapter : RecyclerView.Adapter<TrackAdapter.TrackHolder>() {
     class TrackHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val binding = ItemTrackBinding.bind(view)
 
-        fun bind(track: Track) {
+        fun bind(track: Track){
             binding.tvTrackName.text = track.name
             binding.tvTrackDuration.text = track.duration
 
-            Log.i("TrackHolder","Se vinculo el Track ${track.name}")
-            itemView.setOnClickListener {
-                val intent = Intent(itemView.context, AlbumsDetailActivity::class.java).apply {
-                    putExtra(trackId, track.id.toString())
-                    Log.i("Track", track.id.toString())
-                }
-                itemView.context.startActivity(intent)
-            }
-
+//            itemView.setOnClickListener {
+//                val intent = Intent(itemView.context, AlbumsDetailActivity::class.java)
+//                intent.putExtra("albumId", album.id.toString())
+//                itemView.context.startActivity(intent)
+//            }
         }
     }
 }

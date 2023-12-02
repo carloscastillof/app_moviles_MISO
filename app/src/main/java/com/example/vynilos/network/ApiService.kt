@@ -31,10 +31,13 @@ interface ApiService {
     fun createAlbum(@Url url:String, @Body album: JsonObject): Call<Album>
 
     @POST
-    fun createComment(@Url url:String, @Body comment: JsonObject): Call<JsonObject>
+
+    fun createCommentToAlbum(@Url url:String, @Body comment: Comment): Call<Comment>
 
     @GET
     fun getComment(@Url url:String): Call<Comment>
 
+    @POST
+    fun createTrackToAlbum(@Url url:String, @Body track: Track): Call<Track>
 
 }

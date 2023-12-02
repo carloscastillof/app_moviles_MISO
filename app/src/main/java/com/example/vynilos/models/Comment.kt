@@ -1,16 +1,14 @@
 package com.example.vynilos.models
-import com.example.vynilos.repositories.CommentRepository
 
-data class Comment (
-    val id:Number?,
-    val description: String,
-    val raiting: Number,
-    val albumId: Number,
-    val collectorId: Number
+import com.google.gson.annotations.SerializedName
+
+data class Collector(
+    @SerializedName("id") val id: Int
+)
+data class Comment(
+    @SerializedName("description") val description: String,
+    @SerializedName("rating") val rating: Number,
+    @SerializedName("collector") val collector: Collector = Collector(id = 1)
 ){
-    private val commentRepository = CommentRepository()
-    fun jsonPostString() : String {
-        return "{\"description\":\"${this.description}\",\"raiting\":${this.raiting},\"albumId\":${this.albumId},\"collectorId\":${this.collectorId}}"
-    }
-
+    constructor(): this("null",0)
 }

@@ -121,7 +121,7 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/actionButton"
+                    android:id="@+id/btn_tie_track_to_album"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
@@ -132,7 +132,7 @@
                     android:gravity="center_vertical"
                     android:padding="2dp"
                     android:paddingEnd="20dp"
-                    android:text="Asignar Canción"
+                    android:text="@string/tie_track_to_album"
                     android:textColor="@android:color/white" />
 
                 <RelativeLayout

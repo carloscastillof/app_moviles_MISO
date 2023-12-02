@@ -1,8 +1,11 @@
 package com.example.vynilos.models
 
-data class Track(
-    val id: String,
-    val name: String,
-    val duration: String,
-    val albumId: Number
-)
+import com.google.gson.annotations.SerializedName
+
+data class Track (
+    @SerializedName("name") val name: String,
+    @SerializedName("duration") val duration: String,
+
+    ){
+    constructor(): this("null","null")
+}
