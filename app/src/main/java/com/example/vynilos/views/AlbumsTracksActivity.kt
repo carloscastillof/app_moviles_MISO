@@ -14,7 +14,6 @@ class AlbumsTracksActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAlbumsTracksBinding
     private var serviceAdapter = NetworkServiceAdapter()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAlbumsTracksBinding.inflate(layoutInflater)

@@ -33,15 +33,15 @@ class AlbumsDetailActivity: AppCompatActivity() {
         binding = ActivityDetailAlbumBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        actionButton = findViewById(R.id.btn_tie_track_to_album)
+        actionButtonComentarios = findViewById(R.id.actionButtonComentarios)
+
         var albumId = intent.getStringExtra("albumId")
         if (albumId != null) {
             initViewModel(albumId.toInt())
         }
         handleBackClick()
         initRecyclerView()
-
-        actionButton = findViewById(R.id.btn_tie_track_to_album)
-        actionButtonComentarios = findViewById(R.id.actionButtonComentarios)
 
         val tabLayout = binding.tabLayout
 
@@ -74,9 +74,6 @@ class AlbumsDetailActivity: AppCompatActivity() {
                     binding.rvTracks.visibility = View.GONE
                     actionButton.visibility = View.GONE
                     actionButtonComentarios.visibility = if (roleName == "COLECCIONISTA") View.VISIBLE else View.GONE
-
-                    /*findViewById<RelativeLayout>(R.id.tracksContent).visibility = View.GONE
-                    findViewById<RelativeLayout>(R.id.comentariosContent).visibility = View.VISIBLE*/
 
                 }
             }
