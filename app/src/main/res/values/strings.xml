@@ -11,5 +11,9 @@
     <string name="comentar">Comentar</string>
     <string name="title_activity_artist_detail">ArtistDetailActivity</string>
     <string name="birthday">Fecha creacion de la banda</string>
+    <string name="tie_track_to_album">Asociar canción al álbum</string>
+    <string name="track_name_hint">Nombre de la canción</string>
+    <string name="track_duration_hint">Duración de la canción</string>
+    <string name="tie_track">Asociar canción</string>
 </resources>
 

@@ -25,6 +25,9 @@
             android:name=".views.MusiciansActivity"
             android:exported="true" />
         <activity
+            android:name=".views.AlbumsTracksActivity"
+            android:exported="true"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

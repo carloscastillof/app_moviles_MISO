@@ -28,4 +28,7 @@ interface ApiService {
 
     @POST
     fun createAlbum(@Url url:String, @Body album: JsonObject): Call<Album>
+
+    @POST
+    fun createTrackToAlbum(@Url url:String, @Body track: Track): Call<Track>
 }
