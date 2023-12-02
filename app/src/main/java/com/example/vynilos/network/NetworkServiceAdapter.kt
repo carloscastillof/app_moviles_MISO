@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.vynilos.models.Album
 import com.example.vynilos.models.Artist
 import com.example.vynilos.models.Track
+import com.example.vynilos.models.Comment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -69,9 +70,72 @@ class NetworkServiceAdapter {
         }
     }
 
+    fun getComment(liveDataList: MutableLiveData<Comment>, albumId: Number) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val service = getRetrofitInstance().create(ApiService::class.java)
+            val call = service.getComment("/albums/$albumId/comments")
+
+            call.enqueue(object : Callback<Comment> {
+                override fun onFailure(call: Call<Comment>, t: Throwable) {
+                }
+
+                override fun onResponse(call: Call<Comment>, response: Response<Comment>) {
+                    Handler(Looper.getMainLooper()).post {
+                        Log.i("getCommentAdapter", response.body().toString())
+                        liveDataList.postValue(response.body())
+                    }
+                }
+            })
+        }
+    }
+
     fun createAlbum(album: Album): Call<Album> {
         Log.i("album_creado", album.toString())
         val service = getRetrofitInstance().create(ApiService::class.java)
         return service.createAlbum("/albums", album.jsonPostString())
+    }
+
+
+    fun createCommentToAlbum(description: String, rating: Number, id: Number) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val service = getRetrofitInstance().create(ApiService::class.java)
+            val comment = Comment(description = description, rating = rating)
+
+            val call = service.createCommentToAlbum("/albums/$id/comments",comment)
+
+            call.enqueue(object : Callback<Comment> {
+                override fun onFailure(call: Call<Comment>, t: Throwable) {
+                    //#Need to figureout how to handle error
+                }
+
+                override fun onResponse(call: Call<Comment>, response: Response<Comment>) {
+                    val addedComment = response.body()
+                    println(addedComment)
+                }
+            })
+        }
+    }
+
+    fun createTrackToAlbum(name: String, duration: String, id: Number) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val service = getRetrofitInstance().create(ApiService::class.java)
+            val track = Track(name = name, duration = duration)
+
+            val call = service.createTrackToAlbum("/albums/$id/tracks",track)
+
+            call.enqueue(object : Callback<Track> {
+                override fun onFailure(call: Call<Track>, t: Throwable) {
+                    //#Need to figureout how to handle error
+                }
+
+                override fun onResponse(call: Call<Track>, response: Response<Track>) {
+//                    Handler(Looper.getMainLooper()).post {
+//                        liveDataList.postValue(response.body())
+//                    }
+                    val addedTrack = response.body()
+                    println(addedTrack)
+                }
+            })
+        }
     }
 }
