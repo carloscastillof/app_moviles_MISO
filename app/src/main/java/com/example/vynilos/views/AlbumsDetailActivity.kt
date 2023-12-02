@@ -54,14 +54,16 @@ class AlbumsDetailActivity: AppCompatActivity() {
 
         if (roleName == "COLECCIONISTA") {
             actionButton.visibility = View.VISIBLE
-            actionButtonComentarios.visibility = View.VISIBLE
+            actionButtonComentarios.visibility = View.GONE
+            if (albumId != null) {
+                bindAlbumDetailEvents(albumId)
+            }
         } else {
             actionButton.visibility = View.GONE
             actionButtonComentarios.visibility = View.GONE
         }
-
+        binding.rvComments.visibility = View.GONE
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if (tab?.text == "Tracks") {
                     binding.rvComments.visibility = View.GONE
