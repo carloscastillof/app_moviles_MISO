@@ -61,5 +61,6 @@ Cuando se ejecute la prueba verá un resultado como este que indica que la prueb
 Para validar la aplicación en construcción correspondiente al primer sprint en un dispositivo, puedes descargar el archivo APK a través de los enlaces en la parte inferior. Esto le permitirá probar y evaluar la funcionalidad de la aplicación en su propio dispositivo.
 - APK Sprint 1: [APK](https://uniandes-my.sharepoint.com/:u:/g/personal/ja_henriquez_uniandes_edu_co/Ed7zteu6gTtNgcUGeZcDk1EB7uHWpZbyFBAmRryAROpukQ?e=DuOjyB)
 - APK Sprint 2: [APK](https://uniandes-my.sharepoint.com/:u:/g/personal/ja_henriquez_uniandes_edu_co/EWKNAU6LmcRIj1fYtHk3LQgB8PK-d7ZHSGB1eQIGmleIUQ?e=plI5Ra)
+- APK Sprint 3: [APK](https://uniandes-my.sharepoint.com/:u:/g/personal/ja_henriquez_uniandes_edu_co/EcmoAfjVa9tCleMHYTpdwI8Bs13DBCkkE8mBFGwUcusazA?e=h0TL2P)
 
 
