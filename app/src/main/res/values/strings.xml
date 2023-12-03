@@ -18,5 +18,6 @@
     <string name="track_puntuacion_hint">Puntuación</string>
     <string name="tie_track">Asociar Canción</string>
     <string name="tie_comment">Asociar Comentario</string>
+    <string name="tie_album_to_band">Asociar album al artiste</string>
 </resources>
 

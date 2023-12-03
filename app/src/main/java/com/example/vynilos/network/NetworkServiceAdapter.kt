@@ -5,8 +5,8 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.vynilos.models.Album
 import com.example.vynilos.models.Artist
-import com.example.vynilos.models.Track
 import com.example.vynilos.models.Comment
+import com.example.vynilos.models.Track
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -134,6 +134,41 @@ class NetworkServiceAdapter {
 //                    }
                     val addedTrack = response.body()
                     println(addedTrack)
+                }
+            })
+        }
+    }
+
+    fun createAlbumToBand(bandId: Number, albumId: Number, callback: (Int) -> Unit) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val service = getRetrofitInstance().create(ApiService::class.java)
+
+            val call = service.createAlbumToBand("/bands/$bandId/albums/$albumId")
+            val request = call.request()
+            val requestBody = request.body()
+            val requestBodyString = requestBody?.toString() ?: ""
+
+            Log.d("Request", "Request URL: ${request.url()}")
+            Log.d("Request", "Request Method: ${request.method()}")
+            Log.d("Request", "Request Headers: ${request.headers()}")
+            Log.d("Request", "Request Body: $requestBodyString")
+
+            call.enqueue(object : Callback<Album> {
+                override fun onFailure(call: Call<Album>, t: Throwable) {
+                    Log.e("NetworkError", "Error occurred: ${t.message}")
+                    callback.invoke(0)
+                }
+
+                override fun onResponse(call: Call<Album>, response: Response<Album>) {
+                    if (response.isSuccessful) {
+                        val addedTrack = response.body()
+                        Log.d("NetworkSuccess", "Track added: $addedTrack")
+                        callback.invoke(response.code())
+                    } else {
+                        Log.e("NetworkError", "Error: ${response.code()}")
+                        callback.invoke(response.code())
+                        // Aquí puedes manejar el error de la manera que prefieras
+                    }
                 }
             })
         }

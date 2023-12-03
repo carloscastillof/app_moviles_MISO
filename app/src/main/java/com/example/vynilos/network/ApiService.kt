@@ -1,7 +1,7 @@
 package com.example.vynilos.network
 
-import com.example.vynilos.models.Artist
 import com.example.vynilos.models.Album
+import com.example.vynilos.models.Artist
 import com.example.vynilos.models.Comment
 import com.example.vynilos.models.Track
 import com.google.gson.JsonObject
@@ -40,4 +40,6 @@ interface ApiService {
     @POST
     fun createTrackToAlbum(@Url url:String, @Body track: Track): Call<Track>
 
+    @POST
+    fun createAlbumToBand(@Url url:String): Call<Album>
 }
